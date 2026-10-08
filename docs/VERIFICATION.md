@@ -42,10 +42,10 @@ For each run confirm the Live badge, valid structured findings, quote verificati
 - Public source: https://github.com/ZeroCool0388/vendor-risk-triage
 - Permanent demo: https://vendor-risk-triage-zerocool0388.vercel.app
 - Project: https://vercel.com/zero-cool0388/vendor-risk-triage
-- Vercel's claim flow transferred the verified deployment into Steve's ZeroCool0388 Hobby team. The project was renamed; the deployed source is commit `fa07d76`. No provider keys were supplied and the app displays Demo mode.
+- Vercel's claim flow transferred the initial verified deployment (`fa07d76`) into Steve's ZeroCool0388 Hobby team. The project was renamed. No provider keys were supplied and the app displays Demo mode.
 - Ready state, home page HTTP 200, all three seeded APIs and all five browser scenarios passed on the permanent domain after claiming. Source passages, all three vendor workflows, uploads, exports and responsive layouts were checked. Both earlier Vercel addresses return HTTP 307 redirects to the permanent domain.
 - GitHub Actions passed: https://github.com/ZeroCool0388/vendor-risk-triage/actions/runs/37841272546
-- The CLI device login remained unavailable because Vercel's Allow Access button stayed disabled. That login was stopped; no CLI credential was created. Automatic deployments are not connected to GitHub yet. Future source changes need a deliberate Vercel deployment or a repository connection.
+- On 8 October 2026, the project was connected to `ZeroCool0388/vendor-risk-triage` through Vercel's Git settings. The existing GitHub app has access to the two explicitly selected project repositories. Pushes to `main` trigger production deployments; pull requests receive preview deployments. No CLI credential is needed for this workflow.
 
 ## Hosting boundaries
 

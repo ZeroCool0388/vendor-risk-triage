@@ -62,7 +62,7 @@ PLAYWRIGHT_BASE_URL=https://your-demo.vercel.app npm run test:e2e
 npm run format      # Prettier
 ```
 
-**Hosted demo:** the production project is owned by the ZeroCool0388 Vercel team and runs without provider keys. The deploy button below creates your own copy. Automatic GitHub deployments require connecting this repository in the project’s Git settings; the current deployment was claimed directly from the verified preview.
+**Hosted demo:** the production project is owned by the ZeroCool0388 Vercel team and runs without provider keys. The project is connected to this GitHub repository: pushes to `main` deploy to production, and pull requests receive preview deployments. The deploy button below creates your own copy.
 
 **Deploy to Vercel:** import this repository, keep the detected Next.js preset and default build settings, then deploy. Leave provider keys unset on the public demo. The committed `data/` directory is included in the server functions through Next.js file tracing. No database, external storage or `vercel.json` is required.
 
