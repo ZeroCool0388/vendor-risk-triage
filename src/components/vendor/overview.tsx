@@ -1,6 +1,15 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { PieChart, Pie, Cell } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+} from "recharts";
 import { Info, ShieldCheck } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -179,13 +188,28 @@ export function Overview({ assessment }: { assessment: Assessment }) {
                       : "Unassessed"
                   }
                 >
-                  <span
-                    className="domain-fill block"
-                    style={{
-                      width: d.assessed ? `${d.score}%` : "0%",
-                      background: `var(--${rating(d.score).toLowerCase()}-signal)`,
-                    }}
-                  />
+                  <ResponsiveContainer
+                    width="100%"
+                    height={7}
+                    initialDimension={{ width: 100, height: 7 }}
+                  >
+                    <BarChart
+                      data={[{ score: d.assessed ? d.score : 0 }]}
+                      layout="vertical"
+                      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                      accessibilityLayer={false}
+                    >
+                      <XAxis type="number" domain={[0, 100]} hide />
+                      <YAxis type="category" hide />
+                      <Bar
+                        dataKey="score"
+                        barSize={7}
+                        radius={3}
+                        fill={`var(--${rating(d.score).toLowerCase()}-signal)`}
+                        isAnimationActive={false}
+                      />
+                    </BarChart>
+                  </ResponsiveContainer>
                 </span>
                 <span className="domain-number">
                   {d.assessed ? Math.round(d.score) : "—"}

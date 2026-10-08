@@ -4,7 +4,7 @@ This file records observed checks separately from checks that require external a
 
 ## Automated checks
 
-Verified on 8 October 2026: production build, strict types, lint with zero warnings, 20 unit/API tests and all five Chromium scenarios passed. The browser suite ran against the production server. The exported report has three pages; text extraction verified the disclaimer on each page, and rendered pages were inspected. Production dependency audit: zero reported vulnerabilities. The development toolchain retains nine high advisories in the shadcn/ESLint dependency chain; no forced downgrade was applied.
+Verified on 8 October 2026: production build, strict types, lint with zero warnings, 20 unit/API tests and all five Chromium scenarios passed. The browser suite passed against both the local production server and the hosted Vercel preview. GitHub Actions also passed the clean-install, lint, types, unit/API tests, build and browser suite. A separate fresh public clone installed, built and started with no `.env` file; its populated workspace returned HTTP 200. The exported report has three pages; text extraction verified the disclaimer on each page, and rendered pages were inspected. Production dependency audit: zero reported vulnerabilities. The development toolchain retains nine high advisories in the shadcn/ESLint dependency chain; no forced downgrade was applied.
 
 - `npm run typecheck`: Next.js route types and strict TypeScript.
 - `npm run lint`: ESLint, with zero warnings permitted.
@@ -36,6 +36,14 @@ Run privately when a key is available; keep public deployment keys unset.
 | Anthropic with a real key | Pending   | Pending | Pending  | Pending                |
 
 For each run confirm the Live badge, valid structured findings, quote verification, gap/unverified flags, overridden score and both report formats. No real keys were present during local implementation.
+
+## Deployment
+
+- Public source: https://github.com/ZeroCool0388/vendor-risk-triage
+- Temporary Vercel preview: https://temporary-instant-fluorine-6abrj63.vercel.app
+- Ready state verified, home page HTTP 200, all three seeded APIs HTTP 200 with verified source passages, all five hosted browser scenarios passed. No provider keys were supplied.
+- Preview expires 8 October 2026 at 22:34 Europe/London. Permanent hosting remains pending: Steve confirmed he does not have a Vercel account. The README deploy button imports the repository once an account exists. No account was created on his behalf.
+- Initial GitHub Actions run passed: https://github.com/ZeroCool0388/vendor-risk-triage/actions/runs/37840495214
 
 ## Hosting boundaries
 
