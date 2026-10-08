@@ -4,7 +4,7 @@ Drop in a vendor's security documents and get a scored, cited risk assessment wi
 
 ![MIT licence](https://img.shields.io/badge/licence-MIT-087e72) ![Next.js](https://img.shields.io/badge/Next.js-16-172536) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)
 
-**[Temporary live demo](https://temporary-instant-fluorine-6abrj63.vercel.app)** (expires 8 October 2026, 22:34 UK time; permanent Vercel hosting pending an account). **[Source](https://github.com/ZeroCool0388/vendor-risk-triage)** · Built by [Steve Grady](https://github.com/ZeroCool0388) · [LinkedIn URL]
+**[Live demo](https://vendor-risk-triage-zerocool0388.vercel.app)**. **[Source](https://github.com/ZeroCool0388/vendor-risk-triage)** · Built by [Steve Grady](https://github.com/ZeroCool0388) · [LinkedIn URL]
 
 ![Northwind vendor workspace](docs/screenshots/workspace.png)
 
@@ -62,7 +62,7 @@ PLAYWRIGHT_BASE_URL=https://your-demo.vercel.app npm run test:e2e
 npm run format      # Prettier
 ```
 
-**Permanent hosting:** create your Vercel account, then use the deploy button below to import the public repository. The temporary preview is for review and expires at the time shown above. No provider keys are needed.
+**Hosted demo:** the production project is owned by the ZeroCool0388 Vercel team and runs without provider keys. The deploy button below creates your own copy. Automatic GitHub deployments require connecting this repository in the project’s Git settings; the current deployment was claimed directly from the verified preview.
 
 **Deploy to Vercel:** import this repository, keep the detected Next.js preset and default build settings, then deploy. Leave provider keys unset on the public demo. The committed `data/` directory is included in the server functions through Next.js file tracing. No database, external storage or `vercel.json` is required.
 

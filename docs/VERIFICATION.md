@@ -4,7 +4,7 @@ This file records observed checks separately from checks that require external a
 
 ## Automated checks
 
-Verified on 8 October 2026: production build, strict types, lint with zero warnings, 20 unit/API tests and all five Chromium scenarios passed. The browser suite passed against both the local production server and the hosted Vercel preview. GitHub Actions also passed the clean-install, lint, types, unit/API tests, build and browser suite. A separate fresh public clone installed, built and started with no `.env` file; its populated workspace returned HTTP 200. The exported report has three pages; text extraction verified the disclaimer on each page, and rendered pages were inspected. Production dependency audit: zero reported vulnerabilities. The development toolchain retains nine high advisories in the shadcn/ESLint dependency chain; no forced downgrade was applied.
+Verified on 8 October 2026: production build, strict types, lint with zero warnings, 20 unit/API tests and all five Chromium scenarios passed. The browser suite passed against the local production server, the hosted Vercel preview and the permanent production domain. GitHub Actions also passed the clean-install, lint, types, unit/API tests, build and browser suite. A separate fresh public clone installed, built and started with no `.env` file; its populated workspace returned HTTP 200. The exported report has three pages; text extraction verified the disclaimer on each page, and rendered pages were inspected. Production dependency audit: zero reported vulnerabilities. The development toolchain retains nine high advisories in the shadcn/ESLint dependency chain; no forced downgrade was applied.
 
 - `npm run typecheck`: Next.js route types and strict TypeScript.
 - `npm run lint`: ESLint, with zero warnings permitted.
@@ -40,10 +40,12 @@ For each run confirm the Live badge, valid structured findings, quote verificati
 ## Deployment
 
 - Public source: https://github.com/ZeroCool0388/vendor-risk-triage
-- Temporary Vercel preview: https://temporary-instant-fluorine-6abrj63.vercel.app
-- Ready state verified, home page HTTP 200, all three seeded APIs HTTP 200 with verified source passages, all five hosted browser scenarios passed. No provider keys were supplied.
-- Preview expires 8 October 2026 at 22:34 Europe/London. Permanent hosting remains pending: Steve confirmed he does not have a Vercel account. The README deploy button imports the repository once an account exists. No account was created on his behalf.
-- Initial GitHub Actions run passed: https://github.com/ZeroCool0388/vendor-risk-triage/actions/runs/37840495214
+- Permanent demo: https://vendor-risk-triage-zerocool0388.vercel.app
+- Project: https://vercel.com/zero-cool0388/vendor-risk-triage
+- Vercel's claim flow transferred the verified deployment into Steve's ZeroCool0388 Hobby team. The project was renamed; the deployed source is commit `fa07d76`. No provider keys were supplied and the app displays Demo mode.
+- Ready state, home page HTTP 200, all three seeded APIs and all five browser scenarios passed on the permanent domain after claiming. Source passages, all three vendor workflows, uploads, exports and responsive layouts were checked. Both earlier Vercel addresses return HTTP 307 redirects to the permanent domain.
+- GitHub Actions passed: https://github.com/ZeroCool0388/vendor-risk-triage/actions/runs/37841272546
+- The CLI device login remained unavailable because Vercel's Allow Access button stayed disabled. That login was stopped; no CLI credential was created. Automatic deployments are not connected to GitHub yet. Future source changes need a deliberate Vercel deployment or a repository connection.
 
 ## Hosting boundaries
 
