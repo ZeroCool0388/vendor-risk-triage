@@ -1,0 +1,66 @@
+{
+  "domains": [
+    {
+      "name": "Access Control",
+      "weight": 0.22
+    },
+    {
+      "name": "Data Protection",
+      "weight": 0.18
+    },
+    {
+      "name": "Business Continuity",
+      "weight": 0.15
+    },
+    {
+      "name": "Incident Response",
+      "weight": 0.15
+    },
+    {
+      "name": "Vendor Sub-processors",
+      "weight": 0.12
+    },
+    {
+      "name": "Compliance & Certifications",
+      "weight": 0.1
+    },
+    {
+      "name": "Contractual",
+      "weight": 0.08
+    }
+  ],
+  "severity": {
+    "Low": 1,
+    "Medium": 2,
+    "High": 3,
+    "Critical": 4
+  },
+  "likelihood": {
+    "Unlikely": 1,
+    "Possible": 2,
+    "Likely": 3,
+    "Almost certain": 4
+  },
+  "bands": [
+    {
+      "min": 0,
+      "max": 24,
+      "label": "Low"
+    },
+    {
+      "min": 25,
+      "max": 49,
+      "label": "Medium"
+    },
+    {
+      "min": 50,
+      "max": 79,
+      "label": "High"
+    },
+    {
+      "min": 80,
+      "max": 100,
+      "label": "Critical"
+    }
+  ]
+}

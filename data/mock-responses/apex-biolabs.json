@@ -1,0 +1,95 @@
+{
+  "executiveSummary": "Apex presents high operational and data protection risk. The recovery plan has never been tested, a 24-hour recovery point permits significant data loss, and international processing lacks documented transfer safeguards. Validate resilience and transfer arrangements before placing customer data in the service; obtain an updated penetration test.",
+  "findings": [
+    {
+      "id": "AP-01",
+      "domain": "Business Continuity",
+      "finding": "Disaster recovery plan has never been tested",
+      "description": "Disaster recovery plan has never been tested. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "Critical",
+      "likelihood": "Likely",
+      "evidence": [
+        {
+          "docId": "apex-biolabs-doc-3",
+          "quote": "The disaster recovery plan has never been tested. Recovery steps remain a draft.",
+          "location": "Exercise status"
+        }
+      ],
+      "isGap": false,
+      "recommendedFollowUp": "Please schedule and complete a disaster recovery exercise and share measured recovery results before production onboarding."
+    },
+    {
+      "id": "AP-02",
+      "domain": "Business Continuity",
+      "finding": "24-hour recovery point risks a full day of data loss",
+      "description": "24-hour recovery point risks a full day of data loss. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "High",
+      "likelihood": "Almost certain",
+      "evidence": [
+        {
+          "docId": "apex-biolabs-doc-3",
+          "quote": "The recovery point objective is 24 hours. Daily snapshots are the only recovery mechanism.",
+          "location": "Recovery objectives"
+        }
+      ],
+      "isGap": false,
+      "recommendedFollowUp": "Can you support a four-hour RPO and supply evidence of backup restoration and transaction recovery?"
+    },
+    {
+      "id": "AP-03",
+      "domain": "Data Protection",
+      "finding": "International transfers lack documented safeguards",
+      "description": "International transfers lack documented safeguards. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "Critical",
+      "likelihood": "Likely",
+      "evidence": [
+        {
+          "docId": "apex-biolabs-doc-2",
+          "quote": "No signed Standard Contractual Clauses or UK transfer addendum are currently in place.",
+          "location": "International transfers"
+        }
+      ],
+      "isGap": false,
+      "recommendedFollowUp": "Please provide executed transfer safeguards, a transfer assessment and the complete processing location register."
+    },
+    {
+      "id": "AP-04",
+      "domain": "Compliance & Certifications",
+      "finding": "Penetration testing is overdue",
+      "description": "Penetration testing is overdue. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "High",
+      "likelihood": "Likely",
+      "evidence": [
+        {
+          "docId": "apex-biolabs-doc-1",
+          "quote": "The last independent penetration test was completed 18 months ago. A new test has not been scheduled.",
+          "location": "Compliance / CO-02"
+        }
+      ],
+      "isGap": false,
+      "recommendedFollowUp": "When will the next independent penetration test be completed? Please share the last report and open remediation items."
+    },
+    {
+      "id": "AP-05",
+      "domain": "Contractual",
+      "finding": "Overseas storage requires a transfer review",
+      "description": "Overseas storage requires a transfer review. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "High",
+      "likelihood": "Almost certain",
+      "evidence": [
+        {
+          "docId": "apex-biolabs-doc-2",
+          "quote": "Customer data and backups are stored in Singapore and the United States.",
+          "location": "Data location"
+        }
+      ],
+      "isGap": false,
+      "recommendedFollowUp": "Can you offer UK/EU hosting, and document contractual data residency commitments and backup locations?"
+    }
+  ]
+}

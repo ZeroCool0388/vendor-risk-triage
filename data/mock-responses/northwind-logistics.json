@@ -1,0 +1,113 @@
+{
+  "executiveSummary": "Northwind's evidence identifies material gaps in privileged access, incident notification and subprocessor transparency. Optional administrator MFA and unresolved SOC 2 access review exceptions need attention before approval. Request current penetration testing and recovery exercise evidence, and confirm the offshore support arrangement against your intended data use.",
+  "findings": [
+    {
+      "id": "NW-01",
+      "domain": "Access Control",
+      "finding": "MFA not enforced for privileged accounts",
+      "description": "MFA not enforced for privileged accounts. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "A compromised privileged account can expose customer data and weaken every downstream control. Confirm compensating controls before granting production access.",
+      "severity": "High",
+      "likelihood": "Almost certain",
+      "evidence": [
+        {
+          "docId": "northwind-logistics-doc-1",
+          "quote": "MFA is optional for legacy administrator accounts. Enforcement is planned for the next quarter.",
+          "location": "Access Control / AC-03"
+        }
+      ],
+      "isGap": false,
+      "recommendedFollowUp": "Please confirm when MFA will be mandatory for every administrator, and provide evidence of enforcement and any interim safeguards."
+    },
+    {
+      "id": "NW-02",
+      "domain": "Incident Response",
+      "finding": "Breach notification exceeds the 24-hour review target",
+      "description": "Breach notification exceeds the 24-hour review target. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "High",
+      "likelihood": "Almost certain",
+      "evidence": [
+        {
+          "docId": "northwind-logistics-doc-2",
+          "quote": "Customers are notified within 72 hours of confirmation of a personal data breach.",
+          "location": "Incident Response"
+        }
+      ],
+      "isGap": false,
+      "recommendedFollowUp": "Can you agree a 24-hour initial breach notification commitment and share your escalation procedure?"
+    },
+    {
+      "id": "NW-03",
+      "domain": "Vendor Sub-processors",
+      "finding": "Offshore support provider is not disclosed",
+      "description": "Offshore support provider is not disclosed. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "High",
+      "likelihood": "Almost certain",
+      "evidence": [
+        {
+          "docId": "northwind-logistics-doc-4",
+          "quote": "Offshore support is provided by Harbor Support Services in the Philippines. This provider is not yet included in the customer subprocessor register.",
+          "location": "Offshore support"
+        }
+      ],
+      "isGap": false,
+      "recommendedFollowUp": "Please update the subprocessor register with Harbor Support Services, its access scope, processing location and transfer safeguards."
+    },
+    {
+      "id": "NW-04",
+      "domain": "Access Control",
+      "finding": "SOC 2 exception on privileged access reviews",
+      "description": "SOC 2 exception on privileged access reviews. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "A compromised privileged account can expose customer data and weaken every downstream control. Confirm compensating controls before granting production access.",
+      "severity": "High",
+      "likelihood": "Almost certain",
+      "evidence": [
+        {
+          "docId": "northwind-logistics-doc-3",
+          "quote": "The SOC 2 report records an exception: two quarterly privileged access reviews were missed and remediation remains open.",
+          "location": "Access reviews"
+        }
+      ],
+      "isGap": false,
+      "recommendedFollowUp": "Please share the remediation owner, completion date and evidence that the missed access reviews have been completed."
+    },
+    {
+      "id": "NW-05",
+      "domain": "Compliance & Certifications",
+      "finding": "No current penetration test evidence",
+      "description": "No current penetration test evidence. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "Medium",
+      "likelihood": "Almost certain",
+      "evidence": [
+        {
+          "docId": "northwind-logistics-doc-1",
+          "quote": "Industry-standard controls are in place. No dated penetration test report has been provided for this review.",
+          "location": "Compliance / CO-02"
+        }
+      ],
+      "isGap": true,
+      "recommendedFollowUp": "Please provide the latest dated independent penetration test summary, scope and remediation status."
+    },
+    {
+      "id": "NW-06",
+      "domain": "Business Continuity",
+      "finding": "Recovery exercise has not been evidenced",
+      "description": "Recovery exercise has not been evidenced. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "High",
+      "likelihood": "Likely",
+      "evidence": [
+        {
+          "docId": "northwind-logistics-doc-2",
+          "quote": "An annual recovery exercise is planned. No completed recovery exercise report has been supplied.",
+          "location": "Business Continuity"
+        }
+      ],
+      "isGap": true,
+      "recommendedFollowUp": "Please provide a completed disaster recovery exercise report with measured recovery times and corrective actions."
+    }
+  ]
+}

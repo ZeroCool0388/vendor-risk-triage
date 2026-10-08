@@ -1,0 +1,41 @@
+{
+  "executiveSummary": "Sterling demonstrates mature access, incident response and assurance controls in the submitted material. The remaining issues are annual encryption key rotation and incomplete evidence of downstream supplier oversight. Targeted follow-up should clarify the latter before approval; other domains still require analyst review rather than assuming absence of findings proves safety.",
+  "findings": [
+    {
+      "id": "SF-01",
+      "domain": "Data Protection",
+      "finding": "Encryption keys rotate annually",
+      "description": "Encryption keys rotate annually. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "Low",
+      "likelihood": "Possible",
+      "evidence": [
+        {
+          "docId": "sterling-fintech-doc-2",
+          "quote": "Encryption keys are rotated annually. Quarterly rotation has not yet been implemented.",
+          "location": "Encryption"
+        }
+      ],
+      "isGap": false,
+      "recommendedFollowUp": "Can you move key rotation to a quarterly schedule or explain the compensating controls for annual rotation?"
+    },
+    {
+      "id": "SF-02",
+      "domain": "Vendor Sub-processors",
+      "finding": "Downstream supplier oversight is not evidenced",
+      "description": "Downstream supplier oversight is not evidenced. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
+      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "severity": "Medium",
+      "likelihood": "Likely",
+      "evidence": [
+        {
+          "docId": "sterling-fintech-doc-2",
+          "quote": "Direct subprocessors are reviewed annually. Evidence of vendor-of-vendor oversight has not been provided.",
+          "location": "Supplier oversight"
+        }
+      ],
+      "isGap": true,
+      "recommendedFollowUp": "Please provide evidence that your direct subprocessors assess and monitor their downstream suppliers."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+01-vendor-risk-triage.md
+.env*
+!.env.example
+.git/
+node_modules/
+.next/
+test-results/
+playwright-report/
