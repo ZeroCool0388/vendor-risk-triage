@@ -4,7 +4,7 @@ Drop in a vendor's security documents and get a scored, cited risk assessment wi
 
 ![MIT licence](https://img.shields.io/badge/licence-MIT-087e72) ![Next.js](https://img.shields.io/badge/Next.js-16-172536) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)
 
-**[Live demo](https://vendor-risk-triage-zerocool0388.vercel.app)**. **[Source](https://github.com/ZeroCool0388/vendor-risk-triage)** · Built by [Steve Grady](https://github.com/ZeroCool0388) · [LinkedIn URL]
+**[Live demo](https://vendor-risk-triage-zerocool0388.vercel.app)**. **[Source](https://github.com/ZeroCool0388/vendor-risk-triage)** · Built by [Steve Grady](https://github.com/ZeroCool0388) · [LinkedIn](https://www.linkedin.com/in/steve-jg)
 
 ![Northwind vendor workspace](docs/screenshots/workspace.png)
 
@@ -91,7 +91,7 @@ Set one provider key privately on the server. Never use `NEXT_PUBLIC_` for a key
 
 A failed provider call returns a friendly error with **Retry triage** and **Run in demo mode instead**. Demo fallback is explicit; it does not silently pass itself off as live AI. The API has a 55-second provider timeout, no automatic provider retries, and a 60-second function budget.
 
-**Verification boundary:** automated adapter tests use controlled provider responses. Successful real OpenAI and Anthropic calls require privately configured keys and have not been claimed as verified. Use the manual matrix in [verification notes](docs/VERIFICATION.md) when enabling live mode.
+**Verification boundary:** automated adapter tests use controlled provider responses. Successful real OpenAI and Anthropic calls require privately configured keys and have not been claimed as verified. When enabling live mode privately, check all three sample vendors and each upload format with each provider; confirm the Live badge, source quotes, scoring overrides and both export formats.
 
 ## Architecture
 

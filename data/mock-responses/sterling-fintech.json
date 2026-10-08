@@ -5,8 +5,8 @@
       "id": "SF-01",
       "domain": "Data Protection",
       "finding": "Encryption keys rotate annually",
-      "description": "Encryption keys rotate annually. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
-      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "description": "Sterling's assurance summary states that encryption keys rotate annually and that quarterly rotation has not yet been implemented. The disclosed schedule is less frequent than the rotation target used for this review.",
+      "whyItMatters": "A longer rotation interval could extend exposure if a Sterling encryption key were compromised without detection. Annual rotation alone does not prove weak encryption; assess key access controls, monitoring and emergency replacement before deciding whether the low-severity issue needs remediation.",
       "severity": "Low",
       "likelihood": "Possible",
       "evidence": [
@@ -23,8 +23,8 @@
       "id": "SF-02",
       "domain": "Vendor Sub-processors",
       "finding": "Downstream supplier oversight is not evidenced",
-      "description": "Downstream supplier oversight is not evidenced. The submitted evidence supports this issue or leaves the stated control unsubstantiated.",
-      "whyItMatters": "This control affects the vendor's ability to protect customer data and meet service commitments. Resolve the issue against the intended use case before approval.",
+      "description": "Sterling says it reviews direct subprocessors annually, but it has not provided evidence of their oversight of downstream suppliers. The submitted assurance stops at Sterling's immediate supplier relationships.",
+      "whyItMatters": "A direct subprocessor may depend on further suppliers whose security and data access have not been demonstrated in Sterling's pack. Obtain evidence of how those dependencies are assessed and monitored; missing review records do not establish that downstream controls are absent.",
       "severity": "Medium",
       "likelihood": "Likely",
       "evidence": [
