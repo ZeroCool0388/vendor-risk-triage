@@ -13,7 +13,7 @@ Synthetic data only. Never add real company, customer, vendor, or personal data.
 
 ## No secrets in code
 
-No secrets in code. Keys live in Vercel env vars: `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `LLM_PROVIDER`, and `LLM_MODEL`. Never use a `NEXT_PUBLIC_` key. Keep `.env*` gitignored. `.env.example` is the only committed env file, and it holds placeholders only. GitHub push protection is on.
+No secrets in code. Do not commit real keys. `.env.example` holds placeholders only (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `LLM_PROVIDER`, `LLM_MODEL`). Never use a `NEXT_PUBLIC_` key. Keep `.env*` gitignored. GitHub push protection is on.
 
 ## Commits
 
@@ -33,6 +33,6 @@ These must pass before any commit or pull request. They are the checks in `.gith
 
 The README follows this order: problem, who it's for, demo GIF, live demo link (https://vendor-risk-triage-zerocool0388.vercel.app), architecture diagram, eval results, cost and latency, limits and next steps. Only real measured numbers. Never invent metrics, eval scores, cost, or latency.
 
-## Live demo
+## Zero-cost proof of concept
 
-The live demo must stay rate-limited and spend-capped. Live model calls happen only in `POST /api/triage` when a Vercel provider key is set. Keep a request rate limit and a spend cap on that path so public traffic cannot run up OpenAI or Anthropic cost. Leave the public project key-free unless those caps are in place. Keep the existing budgets: a 55-second provider timeout, no provider retries, and a 60-second function limit.
+This repo is a zero-cost proof of concept for hiring managers. No paid API calls at all. Never set provider keys on the public Vercel project. Production must never make live model calls: demo mode only, with built-in synthetic results. Evals run on built-in or recorded outputs only, so cost per run is £0. Never add anything that can incur cost to Steve.
