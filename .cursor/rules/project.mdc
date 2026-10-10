@@ -1,0 +1,38 @@
+---
+description: Project rules for the VendorRisk Triage repo
+alwaysApply: true
+---
+
+# VendorRisk Triage
+
+Next.js 16, React 19, and strict TypeScript. Sample packs live in `data/vendors/` (Northwind Logistics, Apex BioLabs, Sterling Fintech). The public app is https://vendor-risk-triage-zerocool0388.vercel.app and runs without provider keys.
+
+## Synthetic data only
+
+Synthetic data only. Never add real company, customer, vendor, or personal data. No employer names or work data of any kind. Sample documents stay fictional, start with "SYNTHETIC DEMO DATA. Fictional company. Not real.", and use `.example` addresses. Rebuild packs with `npm run data:generate`.
+
+## No secrets in code
+
+No secrets in code. Keys live in Vercel env vars: `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `LLM_PROVIDER`, and `LLM_MODEL`. Never use a `NEXT_PUBLIC_` key. Keep `.env*` gitignored. `.env.example` is the only committed env file, and it holds placeholders only. GitHub push protection is on.
+
+## Commits
+
+The commit author must be Steve Grady <9111388+ZeroCool0388@users.noreply.github.com>. Never use any other name, such as Jarvis.
+
+## Tests before a commit or pull request
+
+These must pass before any commit or pull request. They are the checks in `.github/workflows/ci.yml`:
+
+- `npm run lint` — `eslint . --max-warnings=0`
+- `npm run typecheck` — `next typegen && tsc --noEmit`
+- `npm run test` — Vitest (`vitest run`)
+- `npm run build` — Next.js production build
+- `npm run test:e2e` — Playwright (`playwright test`). Install the browser with `npx playwright install --with-deps chromium` when it is missing.
+
+## README
+
+The README follows this order: problem, who it's for, demo GIF, live demo link (https://vendor-risk-triage-zerocool0388.vercel.app), architecture diagram, eval results, cost and latency, limits and next steps. Only real measured numbers. Never invent metrics, eval scores, cost, or latency.
+
+## Live demo
+
+The live demo must stay rate-limited and spend-capped. Live model calls happen only in `POST /api/triage` when a Vercel provider key is set. Keep a request rate limit and a spend cap on that path so public traffic cannot run up OpenAI or Anthropic cost. Leave the public project key-free unless those caps are in place. Keep the existing budgets: a 55-second provider timeout, no provider retries, and a 60-second function limit.
