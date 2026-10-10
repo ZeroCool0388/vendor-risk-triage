@@ -120,6 +120,20 @@ Shared modules keep extraction, citation verification and scoring independent of
 
 **Citation checks:** exact matches first, then Unicode/case/whitespace normalization, then a conservative single-character typo check across a complete token window. Numeric changes, negation changes and short-word changes do not fuzzy-verify. The matched source anchor replaces an inaccurate model location. A fuzzy match shows both the model's quote and the actual source text. Unverified quotations stay visibly flagged in the drawer, table and exports. Verification proves a passage exists, not that the vendor's statement is true.
 
+## Evaluations
+
+Run the checked-in vendor-risk cases with:
+
+```bash
+npm run eval
+```
+
+The suite is promptfoo-style (`evals/promptfooconfig.json`) and is executed locally by `evals/run.ts`. It covers seeded sample packs, keyword screening, citation checks, score bands, analyst overrides and intake rejection. Cases use the app's deterministic scoring, citation verification, rule-based screening and recorded fixtures.
+
+Evals run in demo mode. They do not call a model provider and they do not use paid AI. Provider API keys are ignored. Pull requests run the same command in [`.github/workflows/eval.yml`](.github/workflows/eval.yml).
+
+A local `npm run eval` run passed **30/30** cases. The suite reported `suite_latency_ms: 228.3` and `model_calls: 0`.
+
 ## How scoring works
 
 The committed [scoring framework](data/scoring-framework.json) is the source of truth.

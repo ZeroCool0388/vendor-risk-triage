@@ -10,6 +10,7 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "eval": "tsx evals/run.ts",
     "format": "prettier --write .",
     "data:generate": "tsx scripts/generate-data.tsx"
   },
