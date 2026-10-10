@@ -19,6 +19,7 @@
     "@ai-sdk/openai": "^4.0.90",
     "@react-pdf/renderer": "4.3.1",
     "@tanstack/react-table": "^8.21.3",
+    "@vercel/analytics": "^2.0.1",
     "ai": "^7.0.134",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
