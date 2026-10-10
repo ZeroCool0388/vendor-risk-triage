@@ -1,0 +1,861 @@
+{
+  "description": "Vendor risk triage evals (demo mode, no model calls)",
+  "providers": ["file://evals/provider.ts"],
+  "prompts": ["{{task}}"],
+  "tests": [
+    {
+      "description": "Northwind complete pack uses the recorded fixture and scores 68 / High",
+      "vars": { "task": "triage", "vendor": "northwind-logistics" },
+      "assert": [
+        { "type": "equals", "path": "blockedLive", "value": false },
+        { "type": "equals", "path": "modeKind", "value": "demo" },
+        { "type": "equals", "path": "provider", "value": "mock" },
+        { "type": "equals", "path": "model", "value": "deterministic" },
+        { "type": "equals", "path": "score", "value": 68 },
+        { "type": "equals", "path": "rating", "value": "High" },
+        { "type": "equals", "path": "baselineScore", "value": 68 },
+        { "type": "equals", "path": "findingCount", "value": 6 },
+        { "type": "equals", "path": "followUpCount", "value": 6 },
+        { "type": "equals", "path": "documentCount", "value": 4 },
+        { "type": "equals", "path": "wordCount", "value": 1537 },
+        { "type": "equals", "path": "manualMinutes", "value": 384 },
+        { "type": "equals", "path": "triageSeconds", "value": 45 },
+        { "type": "equals", "path": "hours", "value": 6.4 },
+        { "type": "equals", "path": "assessedDomains", "value": 5 },
+        { "type": "equals", "path": "allEvidenceVerified", "value": true },
+        { "type": "equals", "path": "allDocumentsSynthetic", "value": true },
+        {
+          "type": "includes",
+          "path": "unassessedDomains",
+          "value": "Data Protection"
+        },
+        {
+          "type": "includes",
+          "path": "unassessedDomains",
+          "value": "Contractual"
+        },
+        {
+          "type": "equals",
+          "path": "byId[\"NW-01\"].severity",
+          "value": "High"
+        },
+        {
+          "type": "equals",
+          "path": "byId[\"NW-01\"].likelihood",
+          "value": "Almost certain"
+        },
+        { "type": "equals", "path": "byId[\"NW-01\"].isGap", "value": false },
+        { "type": "equals", "path": "byId[\"NW-01\"].verified", "value": true },
+        { "type": "equals", "path": "byId[\"NW-01\"].match", "value": "exact" },
+        {
+          "type": "equals",
+          "path": "byId[\"NW-01\"].finding",
+          "value": "MFA not enforced for privileged accounts"
+        },
+        {
+          "type": "contains",
+          "path": "byId[\"NW-01\"].quote",
+          "value": "MFA is optional"
+        },
+        {
+          "type": "contains",
+          "path": "byId[\"NW-01\"].followUp",
+          "value": "mandatory for every administrator"
+        },
+        { "type": "equals", "path": "byId[\"NW-05\"].isGap", "value": true },
+        { "type": "equals", "path": "byId[\"NW-05\"].verified", "value": true },
+        { "type": "equals", "path": "byId[\"NW-06\"].isGap", "value": true },
+        {
+          "type": "contains",
+          "path": "byId[\"NW-06\"].quote",
+          "value": "No completed recovery exercise report"
+        }
+      ]
+    },
+    {
+      "description": "Apex complete pack uses the recorded fixture and scores 71 / High",
+      "vars": { "task": "triage", "vendor": "apex-biolabs" },
+      "assert": [
+        { "type": "equals", "path": "modeKind", "value": "demo" },
+        { "type": "equals", "path": "score", "value": 71 },
+        { "type": "equals", "path": "rating", "value": "High" },
+        { "type": "equals", "path": "baselineScore", "value": 71 },
+        { "type": "equals", "path": "findingCount", "value": 5 },
+        { "type": "equals", "path": "documentCount", "value": 3 },
+        { "type": "equals", "path": "wordCount", "value": 1421 },
+        { "type": "equals", "path": "manualMinutes", "value": 355 },
+        { "type": "equals", "path": "triageSeconds", "value": 42 },
+        { "type": "equals", "path": "hours", "value": 5.9 },
+        { "type": "equals", "path": "assessedDomains", "value": 4 },
+        { "type": "equals", "path": "allEvidenceVerified", "value": true },
+        { "type": "equals", "path": "allDocumentsSynthetic", "value": true },
+        { "type": "gte", "path": "pages", "value": 2 },
+        { "type": "equals", "path": "firstLocation", "value": "Page 1" },
+        {
+          "type": "includes",
+          "path": "unassessedDomains",
+          "value": "Access Control"
+        },
+        {
+          "type": "includes",
+          "path": "unassessedDomains",
+          "value": "Incident Response"
+        },
+        {
+          "type": "includes",
+          "path": "unassessedDomains",
+          "value": "Vendor Sub-processors"
+        },
+        {
+          "type": "equals",
+          "path": "byId[\"AP-01\"].severity",
+          "value": "Critical"
+        },
+        {
+          "type": "contains",
+          "path": "byId[\"AP-01\"].quote",
+          "value": "never been tested"
+        },
+        {
+          "type": "contains",
+          "path": "byId[\"AP-02\"].quote",
+          "value": "24 hours"
+        },
+        {
+          "type": "equals",
+          "path": "byId[\"AP-03\"].severity",
+          "value": "Critical"
+        },
+        {
+          "type": "contains",
+          "path": "byId[\"AP-04\"].quote",
+          "value": "18 months ago"
+        }
+      ]
+    },
+    {
+      "description": "Sterling complete pack uses the recorded fixture and scores 23 / Low",
+      "vars": { "task": "triage", "vendor": "sterling-fintech" },
+      "assert": [
+        { "type": "equals", "path": "modeKind", "value": "demo" },
+        { "type": "equals", "path": "score", "value": 23 },
+        { "type": "equals", "path": "rating", "value": "Low" },
+        { "type": "equals", "path": "baselineScore", "value": 23 },
+        { "type": "equals", "path": "findingCount", "value": 2 },
+        { "type": "equals", "path": "documentCount", "value": 4 },
+        { "type": "equals", "path": "wordCount", "value": 1497 },
+        { "type": "equals", "path": "manualMinutes", "value": 374 },
+        { "type": "equals", "path": "triageSeconds", "value": 44 },
+        { "type": "equals", "path": "hours", "value": 6.2 },
+        { "type": "equals", "path": "assessedDomains", "value": 2 },
+        { "type": "equals", "path": "allEvidenceVerified", "value": true },
+        { "type": "equals", "path": "allDocumentsSynthetic", "value": true },
+        {
+          "type": "includes",
+          "path": "unassessedDomains",
+          "value": "Access Control"
+        },
+        {
+          "type": "equals",
+          "path": "byId[\"SF-01\"].severity",
+          "value": "Low"
+        },
+        {
+          "type": "equals",
+          "path": "byId[\"SF-01\"].likelihood",
+          "value": "Possible"
+        },
+        {
+          "type": "contains",
+          "path": "byId[\"SF-01\"].quote",
+          "value": "rotated annually"
+        },
+        { "type": "equals", "path": "byId[\"SF-02\"].isGap", "value": true },
+        {
+          "type": "equals",
+          "path": "byId[\"SF-02\"].severity",
+          "value": "Medium"
+        },
+        { "type": "equals", "path": "byId[\"SF-02\"].verified", "value": true },
+        {
+          "type": "contains",
+          "path": "byId[\"SF-02\"].quote",
+          "value": "not been provided"
+        }
+      ]
+    },
+    {
+      "description": "Downgrading Northwind NW-01 from High to Medium scores 64 / High",
+      "vars": {
+        "task": "override-score",
+        "vendor": "northwind-logistics",
+        "findingId": "NW-01",
+        "severity": "Medium"
+      },
+      "assert": [
+        { "type": "equals", "path": "score", "value": 64 },
+        { "type": "equals", "path": "rating", "value": "High" },
+        { "type": "equals", "path": "severity", "value": "Medium" },
+        { "type": "equals", "path": "findingScore", "value": 50 },
+        { "type": "equals", "path": "status", "value": "Needs follow-up" }
+      ]
+    },
+    {
+      "description": "Accepting Northwind NW-01 keeps its finding score and the 68 overall score",
+      "vars": {
+        "task": "override-score",
+        "vendor": "northwind-logistics",
+        "findingId": "NW-01",
+        "status": "Accepted"
+      },
+      "assert": [
+        { "type": "equals", "path": "score", "value": 68 },
+        { "type": "equals", "path": "rating", "value": "High" },
+        { "type": "equals", "path": "status", "value": "Accepted" },
+        { "type": "equals", "path": "severity", "value": "High" },
+        { "type": "equals", "path": "findingScore", "value": 75 }
+      ]
+    },
+    {
+      "description": "Mitigating Northwind NW-01 zeroes that finding and lowers the overall score",
+      "vars": {
+        "task": "override-score",
+        "vendor": "northwind-logistics",
+        "findingId": "NW-01",
+        "status": "Mitigated"
+      },
+      "assert": [
+        { "type": "equals", "path": "score", "value": 57 },
+        { "type": "equals", "path": "rating", "value": "High" },
+        { "type": "equals", "path": "status", "value": "Mitigated" },
+        { "type": "equals", "path": "findingScore", "value": 0 }
+      ]
+    },
+    {
+      "description": "A one-document Northwind pack is keyword-screened instead of the recorded fixture",
+      "vars": {
+        "task": "triage",
+        "vendor": "northwind-logistics",
+        "docIds": ["northwind-logistics-doc-1"]
+      },
+      "assert": [
+        { "type": "equals", "path": "modeKind", "value": "rule-based" },
+        { "type": "equals", "path": "provider", "value": "rules" },
+        { "type": "equals", "path": "model", "value": "keyword-v1" },
+        {
+          "type": "equals",
+          "path": "label",
+          "value": "Rule-based (demo mode)"
+        },
+        { "type": "equals", "path": "documentCount", "value": 1 },
+        { "type": "equals", "path": "findingCount", "value": 7 },
+        { "type": "equals", "path": "score", "value": 50 },
+        { "type": "equals", "path": "rating", "value": "High" },
+        { "type": "equals", "path": "allEvidenceVerified", "value": true },
+        { "type": "equals", "path": "allDocumentsSynthetic", "value": true },
+        {
+          "type": "contains",
+          "path": "executiveSummary",
+          "value": "Rule-based screening reviewed 1 document"
+        },
+        {
+          "type": "contains",
+          "path": "executiveSummary",
+          "value": "6 domains contain passages needing follow-up"
+        },
+        {
+          "type": "not-contains",
+          "path": "executiveSummary",
+          "value": "Northwind's evidence identifies"
+        },
+        {
+          "type": "contains",
+          "path": "byDomain[\"Access Control\"].quote",
+          "value": "MFA is optional for legacy administrator accounts."
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Access Control\"].severity",
+          "value": "High"
+        },
+        {
+          "type": "contains",
+          "path": "byDomain[\"Data Protection\"].quote",
+          "value": "No customer data transfers outside the UK or EU occur."
+        },
+        {
+          "type": "contains",
+          "path": "byDomain[\"Business Continuity\"].quote",
+          "value": "An annual recovery exercise is planned."
+        },
+        {
+          "type": "contains",
+          "path": "byDomain[\"Incident Response\"].quote",
+          "value": "within 72 hours"
+        },
+        {
+          "type": "contains",
+          "path": "byDomain[\"Vendor Sub-processors\"].quote",
+          "value": "not yet included"
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Compliance & Certifications\"].isGap",
+          "value": true
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Compliance & Certifications\"].verified",
+          "value": true
+        },
+        {
+          "type": "contains",
+          "path": "byDomain[\"Compliance & Certifications\"].quote",
+          "value": "No dated penetration test report"
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Contractual\"].isGap",
+          "value": true
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Contractual\"].evidenceCount",
+          "value": 0
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Contractual\"].severity",
+          "value": "Low"
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Contractual\"].likelihood",
+          "value": "Unlikely"
+        }
+      ]
+    },
+    {
+      "description": "Adding an upload to a complete Northwind pack does not reuse the recorded fixture",
+      "vars": {
+        "task": "triage",
+        "vendor": "northwind-logistics",
+        "uploads": [
+          {
+            "name": "note.md",
+            "text": "SYNTHETIC DEMO DATA. Fictional company. Not real.\n\nAdditional note for a fictional review."
+          }
+        ]
+      },
+      "assert": [
+        { "type": "equals", "path": "modeKind", "value": "rule-based" },
+        { "type": "equals", "path": "documentCount", "value": 5 },
+        { "type": "equals", "path": "findingCount", "value": 7 },
+        { "type": "equals", "path": "allDocumentsSynthetic", "value": true },
+        {
+          "type": "contains",
+          "path": "executiveSummary",
+          "value": "Rule-based screening reviewed 5 documents"
+        },
+        {
+          "type": "not-contains",
+          "path": "executiveSummary",
+          "value": "Northwind's evidence identifies"
+        }
+      ]
+    },
+    {
+      "description": "Keyword screening cites one passage in each domain and scores the upload 53 / High",
+      "vars": {
+        "task": "triage",
+        "vendorName": "Fictional Upload Ltd",
+        "uploads": [
+          {
+            "name": "policy.md",
+            "text": "SYNTHETIC DEMO DATA. Fictional company. Not real.\n\n# Access\nMFA is optional for administrator accounts.\n\n# Recovery\nThe disaster recovery plan has never been tested.\n\n# Incidents\nCustomers are notified within 72 hours of a confirmed breach.\n\n# Suppliers\nThe offshore subprocessor is not disclosed in the register.\n\n# Data\nCustomer data is stored unencrypted in the archive.\n\n# Assurance\nThe last penetration test was completed 18 months ago.\n\n# Contract\nThe DPA is not signed.\n"
+          }
+        ]
+      },
+      "assert": [
+        { "type": "equals", "path": "modeKind", "value": "rule-based" },
+        { "type": "equals", "path": "model", "value": "keyword-v1" },
+        { "type": "equals", "path": "documentCount", "value": 1 },
+        { "type": "equals", "path": "findingCount", "value": 7 },
+        { "type": "equals", "path": "assessedDomains", "value": 7 },
+        { "type": "equals", "path": "score", "value": 53 },
+        { "type": "equals", "path": "rating", "value": "High" },
+        { "type": "equals", "path": "allEvidenceVerified", "value": true },
+        {
+          "type": "contains",
+          "path": "executiveSummary",
+          "value": "7 domains contain passages needing follow-up"
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Access Control\"].quote",
+          "value": "MFA is optional for administrator accounts."
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Access Control\"].severity",
+          "value": "High"
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Access Control\"].likelihood",
+          "value": "Likely"
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Access Control\"].verified",
+          "value": true
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Data Protection\"].quote",
+          "value": "Customer data is stored unencrypted in the archive."
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Business Continuity\"].quote",
+          "value": "The disaster recovery plan has never been tested."
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Incident Response\"].quote",
+          "value": "Customers are notified within 72 hours of a confirmed breach."
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Vendor Sub-processors\"].quote",
+          "value": "The offshore subprocessor is not disclosed in the register."
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Compliance & Certifications\"].quote",
+          "value": "The last penetration test was completed 18 months ago."
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Compliance & Certifications\"].severity",
+          "value": "Medium"
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Contractual\"].quote",
+          "value": "The DPA is not signed."
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Contractual\"].severity",
+          "value": "Medium"
+        }
+      ]
+    },
+    {
+      "description": "Documents with no keyword hit become coverage gaps and score 6 / Low",
+      "vars": {
+        "task": "triage",
+        "vendorName": "Fictional Upload Ltd",
+        "uploads": [
+          {
+            "name": "overview.md",
+            "text": "SYNTHETIC DEMO DATA. Fictional company. Not real.\n\n# Overview\nThe service stores records for fictional customers.\n"
+          }
+        ]
+      },
+      "assert": [
+        { "type": "equals", "path": "modeKind", "value": "rule-based" },
+        { "type": "equals", "path": "findingCount", "value": 7 },
+        { "type": "equals", "path": "score", "value": 6 },
+        { "type": "equals", "path": "rating", "value": "Low" },
+        { "type": "equals", "path": "allEvidenceVerified", "value": true },
+        {
+          "type": "contains",
+          "path": "executiveSummary",
+          "value": "0 domains contain passages needing follow-up"
+        },
+        {
+          "type": "contains",
+          "path": "executiveSummary",
+          "value": "explicit coverage gaps"
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Access Control\"].isGap",
+          "value": true
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Access Control\"].evidenceCount",
+          "value": 0
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Access Control\"].severity",
+          "value": "Low"
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Access Control\"].likelihood",
+          "value": "Unlikely"
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Contractual\"].isGap",
+          "value": true
+        },
+        {
+          "type": "equals",
+          "path": "byDomain[\"Data Protection\"].isGap",
+          "value": true
+        },
+        {
+          "type": "contains",
+          "path": "byDomain[\"Business Continuity\"].description",
+          "value": "not proof of safety"
+        }
+      ]
+    },
+    {
+      "description": "An exact source quotation verifies",
+      "vars": {
+        "task": "citation",
+        "source": "MFA is optional for all administrative accounts.",
+        "quote": "MFA is optional for all administrative accounts."
+      },
+      "assert": [
+        { "type": "equals", "path": "verified", "value": true },
+        { "type": "equals", "path": "match", "value": "exact" },
+        {
+          "type": "equals",
+          "path": "matchedLocation",
+          "value": "Document start"
+        },
+        {
+          "type": "equals",
+          "path": "matchedQuote",
+          "value": "MFA is optional for all administrative accounts."
+        }
+      ]
+    },
+    {
+      "description": "Case and whitespace differences verify as a normalized match",
+      "vars": {
+        "task": "citation",
+        "source": "MFA is\n optional for all administrative accounts.",
+        "quote": "mfa is optional for all administrative accounts."
+      },
+      "assert": [
+        { "type": "equals", "path": "verified", "value": true },
+        { "type": "equals", "path": "match", "value": "normalized" }
+      ]
+    },
+    {
+      "description": "A single-character typo in a long quotation verifies as a fuzzy match",
+      "vars": {
+        "task": "citation",
+        "source": "MFA is optional for all administrative accounts.",
+        "quote": "MFA is optional for all administrativ accounts."
+      },
+      "assert": [
+        { "type": "equals", "path": "verified", "value": true },
+        { "type": "equals", "path": "match", "value": "fuzzy" },
+        {
+          "type": "equals",
+          "path": "matchedQuote",
+          "value": "MFA is optional for all administrative accounts."
+        }
+      ]
+    },
+    {
+      "description": "A changed hour value does not verify",
+      "vars": {
+        "task": "citation",
+        "source": "Customers are notified within 72 hours of confirmation.",
+        "quote": "Customers are notified within 24 hours of confirmation."
+      },
+      "assert": [
+        { "type": "equals", "path": "verified", "value": false },
+        { "type": "equals", "path": "match", "value": "unverified" },
+        { "type": "equals", "path": "matchedQuote", "value": null }
+      ]
+    },
+    {
+      "description": "Dropping a negation does not verify",
+      "vars": {
+        "task": "citation",
+        "source": "MFA is not enforced for administrative accounts.",
+        "quote": "MFA is enforced for administrative accounts."
+      },
+      "assert": [
+        { "type": "equals", "path": "verified", "value": false },
+        { "type": "equals", "path": "match", "value": "unverified" }
+      ]
+    },
+    {
+      "description": "A quotation with an unknown document id does not verify",
+      "vars": {
+        "task": "citation",
+        "source": "MFA is optional for all administrative accounts.",
+        "quote": "MFA is optional for all administrative accounts.",
+        "docId": "missing-doc",
+        "knownDoc": false
+      },
+      "assert": [
+        { "type": "equals", "path": "verified", "value": false },
+        { "type": "equals", "path": "match", "value": "unverified" },
+        { "type": "equals", "path": "matchedLocation", "value": null }
+      ]
+    },
+    {
+      "description": "A verified quotation keeps the source anchor when the claimed location is wrong",
+      "vars": {
+        "task": "citation",
+        "source": "# Access\nMFA is optional for all administrative accounts.\n# Other\nUnrelated text stays here for the anchor.",
+        "quote": "MFA is optional for all administrative accounts.",
+        "claimedLocation": "Wrong"
+      },
+      "assert": [
+        { "type": "equals", "path": "verified", "value": true },
+        { "type": "equals", "path": "match", "value": "exact" },
+        { "type": "equals", "path": "matchedLocation", "value": "Access" }
+      ]
+    },
+    {
+      "description": "Rating bands follow the scoring framework boundaries",
+      "vars": { "task": "bands" },
+      "assert": [
+        { "type": "equals", "path": "band0", "value": "Low" },
+        { "type": "equals", "path": "band24", "value": "Low" },
+        { "type": "equals", "path": "band25", "value": "Medium" },
+        { "type": "equals", "path": "band49", "value": "Medium" },
+        { "type": "equals", "path": "band50", "value": "High" },
+        { "type": "equals", "path": "band79", "value": "High" },
+        { "type": "equals", "path": "band80", "value": "Critical" },
+        { "type": "equals", "path": "band100", "value": "Critical" }
+      ]
+    },
+    {
+      "description": "Finding risk is severity times likelihood, and mitigated risk is zero",
+      "vars": { "task": "formula" },
+      "assert": [
+        { "type": "equals", "path": "highLikely", "value": 56.25 },
+        { "type": "equals", "path": "criticalCertain", "value": 100 },
+        { "type": "equals", "path": "lowUnlikely", "value": 6.25 },
+        { "type": "equals", "path": "mitigated", "value": 0 },
+        { "type": "equals", "path": "accepted", "value": 56.25 }
+      ]
+    },
+    {
+      "description": "With no provider key the review mode is demo",
+      "vars": { "task": "mode", "env": {} },
+      "assert": [
+        { "type": "equals", "path": "modeKind", "value": "demo" },
+        { "type": "equals", "path": "provider", "value": "mock" },
+        { "type": "equals", "path": "model", "value": "deterministic" },
+        {
+          "type": "equals",
+          "path": "label",
+          "value": "Demo mode: mock AI responses"
+        },
+        { "type": "equals", "path": "error", "value": null }
+      ]
+    },
+    {
+      "description": "Selecting a provider without that provider's key stays in demo mode",
+      "vars": {
+        "task": "mode",
+        "env": {
+          "LLM_PROVIDER": "openai",
+          "ANTHROPIC_API_KEY": "test-key-never-real"
+        }
+      },
+      "assert": [
+        { "type": "equals", "path": "modeKind", "value": "demo" },
+        { "type": "equals", "path": "provider", "value": "mock" },
+        { "type": "equals", "path": "model", "value": "deterministic" },
+        { "type": "equals", "path": "error", "value": null }
+      ]
+    },
+    {
+      "description": "An unsupported provider name is rejected",
+      "vars": { "task": "mode", "env": { "LLM_PROVIDER": "unsupported" } },
+      "assert": [
+        { "type": "equals", "path": "modeKind", "value": null },
+        { "type": "contains", "path": "error", "value": "LLM_PROVIDER" }
+      ]
+    },
+    {
+      "description": "A provider key would select live mode, and the eval does not call the provider",
+      "vars": {
+        "task": "triage",
+        "vendor": "northwind-logistics",
+        "env": { "OPENAI_API_KEY": "test-key-never-real" }
+      },
+      "assert": [
+        { "type": "equals", "path": "blockedLive", "value": true },
+        { "type": "equals", "path": "modeKind", "value": "live" },
+        { "type": "equals", "path": "provider", "value": "openai" },
+        { "type": "equals", "path": "model", "value": "gpt-4.1-mini" },
+        { "type": "equals", "path": "documentCount", "value": 4 },
+        { "type": "equals", "path": "score", "value": null },
+        { "type": "equals", "path": "executiveSummary", "value": null },
+        { "type": "equals", "path": "calledModel", "value": false },
+        { "type": "equals", "path": "networkRequests", "value": 0 }
+      ]
+    },
+    {
+      "description": "Empty, unsupported, oversized and unreadable files are rejected",
+      "vars": { "task": "intake-errors" },
+      "assert": [
+        { "type": "contains", "path": "empty", "value": "no readable text" },
+        { "type": "contains", "path": "unsupported", "value": "Choose a PDF" },
+        { "type": "contains", "path": "oversized", "value": "too large" },
+        { "type": "contains", "path": "corrupt", "value": "couldn't read" }
+      ]
+    },
+    {
+      "description": "Markdown intake keeps the heading anchor",
+      "vars": {
+        "task": "intake-markdown",
+        "name": "policy.md",
+        "text": "# Access\nMFA is optional."
+      },
+      "assert": [
+        { "type": "equals", "path": "location", "value": "Access" },
+        { "type": "equals", "path": "wordCount", "value": 5 },
+        { "type": "contains", "path": "text", "value": "optional" }
+      ]
+    },
+    {
+      "description": "The Apex questionnaire PDF yields page text and anchors",
+      "vars": {
+        "task": "intake-pdf",
+        "vendor": "apex-biolabs",
+        "docId": "apex-biolabs-doc-1"
+      },
+      "assert": [
+        { "type": "gte", "path": "pages", "value": 2 },
+        { "type": "equals", "path": "firstLocation", "value": "Page 1" },
+        { "type": "contains", "path": "text", "value": "SYNTHETIC DEMO DATA" },
+        { "type": "contains", "path": "text", "value": "18 months ago" }
+      ]
+    },
+    {
+      "description": "Markdown export includes the adjusted score, note, citation and demo label",
+      "vars": {
+        "task": "export",
+        "vendor": "northwind-logistics",
+        "findingId": "NW-01",
+        "note": "Compensating control recorded.",
+        "severity": "Medium"
+      },
+      "assert": [
+        { "type": "equals", "path": "score", "value": 64 },
+        { "type": "equals", "path": "rating", "value": "High" },
+        { "type": "equals", "path": "baselineScore", "value": 68 },
+        { "type": "contains", "path": "markdown", "value": "64/100" },
+        { "type": "contains", "path": "markdown", "value": "baseline 68" },
+        {
+          "type": "contains",
+          "path": "markdown",
+          "value": "Compensating control recorded."
+        },
+        { "type": "contains", "path": "markdown", "value": "MFA is optional" },
+        {
+          "type": "contains",
+          "path": "markdown",
+          "value": "SYNTHETIC DEMO DATA"
+        },
+        {
+          "type": "contains",
+          "path": "markdown",
+          "value": "## Follow-up questions"
+        },
+        { "type": "equals", "path": "emailGreeting", "value": true },
+        { "type": "equals", "path": "emailNamesVendor", "value": true },
+        { "type": "contains", "path": "email", "value": "Synthetic demo data" }
+      ]
+    },
+    {
+      "description": "Duplicate finding ids are renamed and a missing quotation stays unverified",
+      "vars": { "task": "assemble" },
+      "assert": [
+        { "type": "equals", "path": "findingCount", "value": 3 },
+        { "type": "equals", "path": "firstId", "value": "X" },
+        { "type": "equals", "path": "secondId", "value": "X-2" },
+        { "type": "equals", "path": "thirdId", "value": "Q" },
+        { "type": "equals", "path": "firstGap", "value": true },
+        { "type": "equals", "path": "secondGap", "value": true },
+        { "type": "equals", "path": "thirdIsGap", "value": false },
+        { "type": "equals", "path": "thirdVerified", "value": false },
+        { "type": "equals", "path": "thirdMatch", "value": "unverified" },
+        {
+          "type": "equals",
+          "path": "thirdQuote",
+          "value": "Breach notice is sent within 24 hours always."
+        },
+        { "type": "equals", "path": "followUpCount", "value": 3 }
+      ]
+    },
+    {
+      "description": "Analyst overrides restore for the same documents and ignore corrupt saved state",
+      "vars": { "task": "persist", "vendor": "northwind-logistics" },
+      "assert": [
+        { "type": "equals", "path": "restoredSeverity", "value": "Low" },
+        {
+          "type": "equals",
+          "path": "restoredNote",
+          "value": "Compensating control recorded."
+        },
+        {
+          "type": "equals",
+          "path": "restoredQuestion",
+          "value": "Please send the current MFA evidence."
+        },
+        { "type": "equals", "path": "corruptSeverity", "value": "High" },
+        { "type": "equals", "path": "emptySeverity", "value": "High" },
+        { "type": "equals", "path": "keyChanged", "value": true },
+        { "type": "equals", "path": "keyPrefix", "value": true }
+      ]
+    },
+    {
+      "description": "Extraction instructions treat documents as untrusted evidence and do not ask for a score",
+      "vars": { "task": "prompt" },
+      "assert": [
+        {
+          "type": "contains",
+          "path": "systemPrompt",
+          "value": "UNTRUSTED EVIDENCE"
+        },
+        {
+          "type": "contains",
+          "path": "systemPrompt",
+          "value": "NEVER invent or paraphrase a quote"
+        },
+        {
+          "type": "contains",
+          "path": "systemPrompt",
+          "value": "Do not calculate a score"
+        },
+        {
+          "type": "contains",
+          "path": "systemPrompt",
+          "value": "24-hour initial notification"
+        },
+        {
+          "type": "contains",
+          "path": "systemPrompt",
+          "value": "Access Control"
+        },
+        {
+          "type": "contains",
+          "path": "systemPrompt",
+          "value": "no findings means a vendor is safe"
+        },
+        { "type": "equals", "path": "calledModel", "value": false }
+      ]
+    }
+  ]
+}
